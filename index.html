@@ -75,11 +75,11 @@
     transform: rotateY(180deg);
   }
   .front img, .back img {
-    width: 400px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     display: block;
     filter: grayscale(100%) contrast(1.1);
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to contain to prevent cropping */
     margin-left: auto;
     margin-right: auto;
   }
@@ -196,10 +196,12 @@
       padding: 1.5rem;
     }
     .flip-container {
-      height: 360px;
+      height: 335px;
     }
     .front img, .back img {
-      width: 360px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure no cropping in mobile view */
     }
     .profile-info h1 {
       font-size: 1.5rem;
@@ -233,7 +235,9 @@
       height: 450px;
     }
     .front img, .back img {
-      width: 450px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure no cropping in larger screens */
     }
   }
 </style>
@@ -277,7 +281,7 @@
           <span class="label">Office Address: </span>
           501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009
         </p>
-        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
+        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads＆Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
           <span class="material-icons">location_on</span> Directions
         </button>
         <p class="mt-4">
@@ -326,21 +330,15 @@
   const flipContainer = document.getElementById('flipContainer');
   const phoneElement = document.getElementById('contact-phone');
   const emailElement = document.getElementById('contact-email');
-  const consultationMahesh = document.getElementById('consultation-mahesh');
-  const consultationDhruv = document.getElementById('consultation-dhruv');
 
   flipContainer.addEventListener('click', function() {
     this.classList.toggle('flipped');
     if (this.classList.contains('flipped')) {
       phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+918980862636" class="text-blue-600 hover:underline">+918980862636</a>';
       emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:dmparekh123@gmail.com" class="text-blue-600 hover:underline">dmparekh123@gmail.com</a>';
-      consultationMahesh.style.display = 'none';
-      consultationDhruv.style.display = 'block';
     } else {
       phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+919909103448</a>';
       emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a>';
-      consultationMahesh.style.display = 'block';
-      consultationDhruv.style.display = 'none';
     }
   });
 </script>
