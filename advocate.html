@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Professional Contact Card</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    background-color: #0f172a;
+    font-family: 'Merriweather', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+  }
+  .container {
+    max-width: 400px;
+    width: 100%;
+    margin: 3rem auto 5rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .card {
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #d4af37;
+    margin-bottom: 2rem;
+  }
+  .profile-card {
+    background: #1e293b;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .profile-card:hover {
+    transform: translateY(-5px) rotateY(5deg);
+  }
+  .flip-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-style: preserve-3d;
+  }
+  .flip-container.flipped {
+    transform: rotateY(180deg);
+  }
+  .front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1.25rem;
+    overflow: hidden;
+  }
+  .front {
+    background: #1e293b;
+  }
+  .back {
+    background: #1e293b;
+    transform: rotateY(180deg);
+  }
+  .front img, .back img {
+    width: 400px;
+    height: auto;
+    display: block;
+    filter: grayscale(100%) contrast(1.1);
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  }
+  .profile-info {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 2rem;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+  }
+  .profile-info h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .profile-info .subtitle {
+    font-weight: 400;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  .experience {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .flip-instruction {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-shadow: 0 0 4px rgba(0,0,0,0.9);
+  }
+  .contact-header, .consultation-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 0.75rem;
+  }
+  .contact-header .material-icons, .consultation-header .material-icons {
+    font-size: 1.8rem;
+    color: #1f2937;
+  }
+  .contact-header h2, .consultation-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+  .contact-info p, .consultation-info p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .contact-info .label, .consultation-info .label {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #1f2937;
+  }
+  .btn-direction, .btn-consultation {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #1e293b;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    margin-top: 0.75rem;
+    border: 1px solid #d4af37;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-direction:hover, .btn-consultation:hover {
+    background-color: #d4af37;
+    color: #1e293b;
+  }
+  .btn-direction .material-icons, .btn-consultation .material-icons {
+    font-size: 1.1rem;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  @media (max-width: 639px) {
+    .container {
+      max-width: 360px;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    .profile-card {
+      max-width: 360px;
+    }
+    .card {
+      max-width: 360px;
+      padding: 1.5rem;
+    }
+    .flip-container {
+      height: 360px;
+    }
+    .front img, .back img {
+      width: 360px;
+    }
+    .profile-info h1 {
+      font-size: 1.5rem;
+    }
+    .profile-info .subtitle {
+      font-size: 0.875rem;
+    }
+    .contact-header h2, .consultation-header h2 {
+      font-size: 1.125rem;
+    }
+    .contact-info p, .consultation-info p {
+      font-size: 0.875rem;
+    }
+    .btn-direction, .btn-consultation {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+    }
+    .flip-instruction {
+      font-size: 0.7rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 450px;
+    }
+    .profile-card, .card {
+      max-width: 450px;
+    }
+    .flip-container {
+      height: 450px;
+    }
+    .front img, .back img {
+      width: 450px;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <section class="profile-card">
+      <div class="flip-container" id="flipContainer">
+        <div class="front">
+          <img src="mahesh.png" alt="Black and white professional portrait of Mahesh A. Parekh" />
+          <div class="image-overlay"></div>
+          <div class="experience">15+ Years Experience</div>
+          <div class="flip-instruction">Tap to view<br/> Dhruv M. Parekh</div>
+          <div class="profile-info">
+            <h1>Mahesh A. Parekh</h1>
+            <div class="subtitle">Advocate, Gujarat High Court</div>
+          </div>
+        </div>
+        <div class="back">
+          <img src="dhruv.png" alt="Profile picture of Dhruv M. Parekh" />
+          <div class="image-overlay"></div>
+          <div class="experience">7+ Years Experience</div>
+          <div class="flip-instruction">Tap to view<br/> Mahesh A. Parekh</div>
+          <div class="profile-info">
+            <h1>Dhruv M. Parekh</h1>
+            <div class="subtitle">Advocate, Gujarat High Court</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="contact-header">
+        <span class="material-icons">phone</span>
+        <h2>Contact Information</h2>
+      </div>
+      <div class="contact-info">
+        <p id="contact-phone"><span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+919909103448</a></p>
+        <p id="contact-email"><span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a></p>
+        <p>
+          <span class="label">Office Address: </span>
+          501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009
+        </p>
+        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
+          <span class="material-icons">location_on</span> Directions
+        </button>
+        <p class="mt-4">
+          <span class="label">High Court: </span>
+          Chamber No. 447, Advocate Building, Gujarat High Court, Sola, Ahmedabad, Gujarat, 380060
+        </p>
+        <button class="btn-direction" onclick="openGoogleMaps('Chamber No. 447, Advocate Building, Gujarat High Court, Sola, Ahmedabad, Gujarat, 380060')">
+          <span class="material-icons">location_on</span> Directions
+        </button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="consultation-header">
+        <span class="material-icons">chat</span>
+        <h2>Book a Consultation</h2>
+      </div>
+      <div class="consultation-info">
+        <p class="mb-4">Schedule a consultation for personalized legal advice.</p>
+        <p id="consultation-mahesh">
+          <span class="label">Mahesh A. Parekh: </span>
+          <button class="btn-consultation" onclick="openWhatsApp('+919909103448')">
+            <span class="material-icons">chat</span> Book Consultation
+          </button>
+        </p>
+        <p id="consultation-dhruv" class="mt-4">
+          <span class="label">Dhruv M. Parekh: </span>
+          <button class="btn-consultation" onclick="openWhatsApp('+918980862636')">
+            <span class="material-icons">chat</span> Book Consultation
+          </button>
+        </p>
+      </div>
+    </section>
+  </main>
+<script>
+  function openGoogleMaps(address) {
+    const query = encodeURIComponent(address);
+    window.open('https://www.google.com/maps/search/?api=1&query=' + query, '_blank');
+  }
+
+  function openWhatsApp(phone) {
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent('I want a consultation')}`;
+    window.open(url, '_blank');
+  }
+
+  const flipContainer = document.getElementById('flipContainer');
+  const phoneElement = document.getElementById('contact-phone');
+  const emailElement = document.getElementById('contact-email');
+  const consultationMahesh = document.getElementById('consultation-mahesh');
+  const consultationDhruv = document.getElementById('consultation-dhruv');
+
+  flipContainer.addEventListener('click', function() {
+    this.classList.toggle('flipped');
+    if (this.classList.contains('flipped')) {
+      phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+918980862636" class="text-blue-600 hover:underline">+918980862636</a>';
+      emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:dmparekh123@gmail.com" class="text-blue-600 hover:underline">dmparekh123@gmail.com</a>';
+      consultationMahesh.style.display = 'none';
+      consultationDhruv.style.display = 'block';
+    } else {
+      phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+919909103448</a>';
+      emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a>';
+      consultationMahesh.style.display = 'block';
+      consultationDhruv.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
