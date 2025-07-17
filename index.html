@@ -79,7 +79,7 @@
     height: 100%;
     display: block;
     filter: grayscale(100%) contrast(1.1);
-    object-fit: contain; /* Changed from cover to contain to prevent cropping */
+    object-fit: contain;
     margin-left: auto;
     margin-right: auto;
   }
@@ -107,17 +107,6 @@
     font-weight: 400;
     font-size: 1rem;
     opacity: 0.9;
-  }
-  .experience {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
   }
   .flip-instruction {
     position: absolute;
@@ -201,7 +190,7 @@
     .front img, .back img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Ensure no cropping in mobile view */
+      object-fit: contain;
     }
     .profile-info h1 {
       font-size: 1.5rem;
@@ -237,7 +226,7 @@
     .front img, .back img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Ensure no cropping in larger screens */
+      object-fit: contain;
     }
   }
 </style>
@@ -249,21 +238,19 @@
         <div class="front">
           <img src="mahesh.png" alt="Black and white professional portrait of Mahesh A. Parekh" />
           <div class="image-overlay"></div>
-          <div class="experience">15+ Years Experience</div>
           <div class="flip-instruction">Tap to view<br/> Dhruv M. Parekh</div>
           <div class="profile-info">
             <h1>Mahesh A. Parekh</h1>
-            <div class="subtitle">Advocate, Gujarat High Court</div>
+            <div class="subtitle">Advocate, Gujarat High Court (1997-Present)</div>
           </div>
         </div>
         <div class="back">
           <img src="dhruv.png" alt="Profile picture of Dhruv M. Parekh" />
           <div class="image-overlay"></div>
-          <div class="experience">7+ Years Experience</div>
           <div class="flip-instruction">Tap to view<br/> Mahesh A. Parekh</div>
           <div class="profile-info">
             <h1>Dhruv M. Parekh</h1>
-            <div class="subtitle">Advocate, Gujarat High Court</div>
+            <div class="subtitle">Advocate, Gujarat High Court (2015-Present)</div>
           </div>
         </div>
       </div>
@@ -275,13 +262,13 @@
         <h2>Contact Information</h2>
       </div>
       <div class="contact-info">
-        <p id="contact-phone"><span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+919909103448</a></p>
+        <p id="contact-phone"><span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+91 9909103448</a></p>
         <p id="contact-email"><span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a></p>
         <p>
           <span class="label">Office Address: </span>
           501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009
         </p>
-        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads＆Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
+        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
           <span class="material-icons">location_on</span> Directions
         </button>
         <p class="mt-4">
@@ -334,10 +321,10 @@
   flipContainer.addEventListener('click', function() {
     this.classList.toggle('flipped');
     if (this.classList.contains('flipped')) {
-      phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+918980862636" class="text-blue-600 hover:underline">+918980862636</a>';
+      phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+918980862636" class="text-blue-600 hover:underline">+91 8980862636</a>';
       emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:dmparekh123@gmail.com" class="text-blue-600 hover:underline">dmparekh123@gmail.com</a>';
     } else {
-      phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+919909103448</a>';
+      phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+91 9909103448</a>';
       emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a>';
     }
   });
