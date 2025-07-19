@@ -175,6 +175,20 @@
       color: inherit;
       transition: color 0.3s ease;
     }
+    .footer {
+      text-align: center;
+      color: #ffffff;
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+    .footer a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 639px) {
       .container {
         max-width: 365px;
@@ -270,9 +284,9 @@
         <p id="contact-email"><span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a></p>
         <p>
           <span class="label">Office Address: </span>
-          501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009
+          501, ADOR Ambition, Between Navrang Six Roads & Lakudi Circle, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009
         </p>
-        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads & Lakudi Talav, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
+        <button class="btn-direction" onclick="openGoogleMaps('501, ADOR Ambition, Between Navrang Six Roads & Lakudi Circle, B/s. Vimal House, Navrangpura, Ahmedabad, Gujarat, 380009')">
           <span class="material-icons">location_on</span> Directions
         </button>
         <p class="mt-4">
@@ -299,6 +313,9 @@
         </div>
       </div>
     </section>
+    <footer class="footer">
+      Powered by <a href="https://devauradigital.com" target="_blank">DevAura Digital</a>
+    </footer>
   </main>
   <script>
     function openGoogleMaps(address) {
