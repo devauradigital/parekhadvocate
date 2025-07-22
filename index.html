@@ -4,35 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Professional Contact Card</title>
-  <!-- Open Graph Meta Tags for WhatsApp/Social Media Preview -->
-  <meta property="og:title" content="Mahesh A. Parekh & Dhruv M. Parekh - Advocates, Gujarat High Court" />
-  <meta property="og:description" content="Contact Mahesh A. Parekh (since 1997) and Dhruv M. Parekh (since 2015), experienced advocates at Gujarat High Court, for legal consultations and services." />
-  <meta property="og:image" content="https://devauradigital.github.io/pksoniadvocate/mahesh.png" />
-  <meta property="og:image:alt" content="Portrait of Mahesh A. Parekh" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://devauradigital.github.io/pksoniadvocate/" />
-  <meta property="og:site_name" content="Mahesh A. Parekh & Dhruv M. Parekh - Advocates" />
-  <!-- Additional Meta Tags for SEO and Compatibility -->
-  <meta name="description" content="Contact Mahesh A. Parekh (since 1997) and Dhruv M. Parekh (since 2015), experienced advocates at Gujarat High Court, for legal consultations and services." />
-  <meta name="author" content="Mahesh A. Parekh, Dhruv M. Parekh" />
-  <meta name="robots" content="index, follow" />
-  <!-- Twitter Card Meta Tags for Additional Compatibility -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mahesh A. Parekh & Dhruv M. Parekh - Advocates, Gujarat High Court" />
-  <meta name="twitter:description" content="Contact Mahesh A. Parekh (since 1997) and Dhruv M. Parekh (since 2015), experienced advocates at Gujarat High Court, for legal consultations and services." />
-  <meta name="twitter:image" content="https://devauradigital.github.io/pksoniadvocate/mahesh.png" />
-  <!-- Favicon for Branding -->
-  <link rel="icon" href="https://devauradigital.github.io/pksoniadvocate/mahesh.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Calendly widget CSS -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <!-- Calendly widget JS -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <style>
     body {
       background-color: #0f172a;
@@ -173,7 +147,7 @@
       margin-bottom: 0.25rem;
       color: #1f2937;
     }
-    .btn-direction, .btn-consultation {
+    .btn-direction, .btn-consultation, .btn-appointment {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -187,12 +161,13 @@
       border: 1px solid #d4af37;
       cursor: pointer;
       transition: all 0.3s ease;
+      text-decoration: none;
     }
-    .btn-direction:hover, .btn-consultation:hover {
+    .btn-direction:hover, .btn-consultation:hover, .btn-appointment:hover {
       background-color: #d4af37;
       color: #1e293b;
     }
-    .btn-direction .material-icons, .btn-consultation .material-icons {
+    .btn-direction .material-icons, .btn-consultation .material-icons, .btn-appointment .material-icons {
       font-size: 1.1rem;
       color: inherit;
       transition: color 0.3s ease;
@@ -244,7 +219,7 @@
       .contact-info p, .consultation-info p {
         font-size: 0.875rem;
       }
-      .btn-direction, .btn-consultation {
+      .btn-direction, .btn-consultation, .btn-appointment {
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
       }
@@ -327,11 +302,11 @@
         <h2>Book a Consultation</h2>
       </div>
       <div class="consultation-info">
-        <p class="mb-4">Schedule a consultation for personalized legal advice with Mahesh A. Parekh or Dhruv M. Parekh.</p>
-        <div class="mt-4">
-          <button class="btn-consultation" onclick="Calendly.showPopupWidget('https://calendly.com/akshat-y-shah1725/30min')">
+        <p class="mb-4">Schedule a consultation for personalized legal advice with Mahesh A. Parekh & Dhruv M. Parekh via WhatsApp.</p>
+        <div class="mt-4 flex gap-4">
+          <a class="btn-appointment" id="appointmentLink" href="https://wa.me/+919909103448?text=Hello%20Mahesh%20A.%20Parekh,%20I%20would%20like%20to%20schedule%20a%20consultation." target="_blank">
             <span class="material-icons">event</span> Book an appointment
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -348,15 +323,18 @@
     const flipContainer = document.getElementById('flipContainer');
     const phoneElement = document.getElementById('contact-phone');
     const emailElement = document.getElementById('contact-email');
+    const appointmentLink = document.getElementById('appointmentLink');
 
     flipContainer.addEventListener('click', function() {
       this.classList.toggle('flipped');
       if (this.classList.contains('flipped')) {
         phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+918980862636" class="text-blue-600 hover:underline">+91 8980862636</a>';
         emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:dmparekh123@gmail.com" class="text-blue-600 hover:underline">dmparekh123@gmail.com</a>';
+        appointmentLink.setAttribute('href', 'https://wa.me/+918980862636?text=Hello%20Dhruv%20M.%20Parekh,%20I%20would%20like%20to%20schedule%20a%20consultation.');
       } else {
         phoneElement.innerHTML = '<span class="label">Call Us: </span> <a href="tel:+919909103448" class="text-blue-600 hover:underline">+91 9909103448</a>';
         emailElement.innerHTML = '<span class="label">Email: </span> <a href="mailto:kmparekh123@yahoo.com" class="text-blue-600 hover:underline">kmparekh123@yahoo.com</a>';
+        appointmentLink.setAttribute('href', 'https://wa.me/+919909103448?text=Hello%20Mahesh%20A.%20Parekh,%20I%20would%20like%20to%20schedule%20a%20consultation.');
       }
     });
   </script>
